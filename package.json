@@ -1,6 +1,6 @@
 {
   "name": "intel-hex-parser",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Parses Intel HEX object code format with record types for data, end, and extended addressing.",
   "type": "module",
   "main": "src/index.js",
