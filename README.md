@@ -29,3 +29,10 @@ The trade-off: only the record types that appear in real-world firmware are supp
 - The checksum is verified strictly. A single flipped bit makes the whole file unparseable. This is intentional.
 - Blank lines are skipped; trailing whitespace on a line is trimmed. Files without an explicit End Of File record still parse — some toolchains omit it.
 - `data` on a returned record is a `Uint8Array`, not a plain array, so comparisons in tests should use `Array.from(r.data)`.
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+
